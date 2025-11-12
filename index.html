@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>QA API – Pruebas Frontend</title>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; }
+    input, button { margin: 0.5rem 0; padding: 0.5rem; width: 100%; }
+    .box { border: 1px solid #ccc; padding: 1rem; margin-bottom: 2rem; }
+    pre { background: #f4f4f4; padding: 1rem; overflow-x: auto; }
+    button { background-color: #007bff; color: white; border: none; cursor: pointer; }
+    button:hover { background-color: #0056b3; }
+  </style>
+</head>
+<body>
+
+  <h1>🔧 Pruebas de API en PHP</h1>
+
+  <div class="box">
+    <h2>📝 Registro</h2>
+    <input type="email" id="reg_email" placeholder="Correo electrónico" />
+    <input type="password" id="reg_pass" placeholder="Contraseña" />
+    <button onclick="probarRegistro()">Registrar</button>
+    <pre id="reg_result"></pre>
+  </div>
+
+  <div class="box">
+    <h2>🔐 Login</h2>
+    <input type="email" id="log_email" placeholder="Correo electrónico" />
+    <input type="password" id="log_pass" placeholder="Contraseña" />
+    <button onclick="probarLogin()">Iniciar sesión</button>
+    <pre id="log_result"></pre>
+  </div>
+
+  <div class="box">
+    <h2>❤️ Health Check</h2>
+    <button onclick="probarHealth()">Verificar estado</button>
+    <pre id="health_result"></pre>
+  </div>
+
+  <script>
+    const baseUrl = "http://localhost/pruebas_api_php";
+
+    async function probarRegistro() {
+      const email = document.getElementById("reg_email").value;
+      const password = document.getElementById("reg_pass").value;
+
+      try {
+        const res = await fetch(`${baseUrl}/register.php`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        document.getElementById("reg_result").textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        document.getElementById("reg_result").textContent = "Error de conexión con la API.";
+      }
+    }
+
+    async function probarLogin() {
+      const email = document.getElementById("log_email").value;
+      const password = document.getElementById("log_pass").value;
+
+      try {
+        const res = await fetch(`${baseUrl}/login.php`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        document.getElementById("log_result").textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        document.getElementById("log_result").textContent = "Error de conexión con la API.";
+      }
+    }
+
+    async function probarHealth() {
+      try {
+        const res = await fetch(`${baseUrl}/health.php`);
+        const data = await res.json();
+        document.getElementById("health_result").textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        document.getElementById("health_result").textContent = "Error de conexión con la API.";
+      }
+    }
+  </script>
+
+</body>
+</html>

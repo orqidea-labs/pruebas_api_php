@@ -1,0 +1,70 @@
+{
+  "info": {
+    "name": "QA_API_PHP",
+    "_postman_id": "9f0b4ec7-720b-4854-bb02-5b3ab24d0beb",
+    "description": "Pruebas de registro, login y estado para API PHP en XAMPP",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Registro exitoso",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"nuevo@qa.com\",\n  \"password\": \"1234\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost/pruebas_api_php/register.php",
+          "protocol": "http",
+          "host": ["localhost"],
+          "path": ["pruebas_api_php", "register.php"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login exitoso",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"nuevo@qa.com\",\n  \"password\": \"1234\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost/pruebas_api_php/login.php",
+          "protocol": "http",
+          "host": ["localhost"],
+          "path": ["pruebas_api_php", "login.php"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Health check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost/pruebas_api_php/health.php",
+          "protocol": "http",
+          "host": ["localhost"],
+          "path": ["pruebas_api_php", "health.php"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

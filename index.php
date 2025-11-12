@@ -1,6 +1,11 @@
 <?php
+header('Content-Type: application/json');
+
 $request = $_SERVER['REQUEST_URI'];
-switch ($request) {
+$base = '/pruebas_api_php';
+$route = str_replace($base, '', parse_url($request, PHP_URL_PATH));
+
+switch ($route) {
     case '/register':
         require 'register.php';
         break;

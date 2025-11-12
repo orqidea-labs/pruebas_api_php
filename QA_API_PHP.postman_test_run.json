@@ -1,0 +1,20 @@
+{
+	"id": "cad2aed3-8e49-4deb-8a2c-b33d143b48f0",
+	"name": "QA_API_PHP",
+	"timestamp": "2025-11-12T20:24:59.090Z",
+	"collection_id": "46826320-9f0b4ec7-720b-4854-bb02-5b3ab24d0beb",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-11-12T20:24:58.914Z",
+	"totalFail": 0,
+	"results": [],
+	"count": 0,
+	"totalTime": 0,
+	"collection": {
+		"requests": []
+	}
+}
